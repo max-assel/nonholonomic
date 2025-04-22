@@ -16,6 +16,19 @@ class KinematicsController(object):
         self.cp = 1.0
         self.cd = 2.0
         self.epsilon = 0.01
+        self.lambda_init = 0.5
+
+        assert(self.cp > 0), ("cp must be positive, but got {}".format(self.cp))
+        assert(self.cd > 0), ("cd must be positive, but got {}".format(self.cd))
+        assert(self.clambda > 0), ("clambda must be positive, but got {}".format(self.clambda))
+        assert(self.epsilon > 0), ("epsilon must be positive, but got {}".format(self.epsilon))
+        assert(self.lambda_init > 0), ("lambda_init must be positive, but got {}".format(self.lambda_init))
+        assert(self.lambda_init > self.epsilon), ("lambda_init must be larger than epsilon, but got lambda_init = {} and epsilon = {}".format(self.lambda_init, self.epsilon))
+
+        assert(self.tf > 0), ("tf must be positive, but got {}".format(self.tf))
+        assert(self.dt > 0), ("dt must be positive, but got {}".format(self.dt))
+        assert(self.dt < self.tf), ("dt must be smaller than tf, but got dt = {} and tf = {}".format(self.dt, self.tf))
+
         # self.lambda_ = 0.5
 
         # self.initialize_xi()
@@ -36,7 +49,7 @@ class KinematicsController(object):
         return xi
     
     def initialize_lambda(self):
-        lambda_ = 0.5
+        lambda_ = self.lambda_init
         return lambda_
 
     def dynamics(self, xi, u):
