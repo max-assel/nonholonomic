@@ -1,3 +1,6 @@
+# Introduction
+Adapted from: https://github.com/estshorter/nid
+
 # Nonholonomic control using near-identity diffeomorphisms
 This repository provides Python implementation of nonholonomic control using near-identity diffeomorphisms (NIDs) for two wheel robots.
 Only &epsilon;-stabilization contol is provided.
